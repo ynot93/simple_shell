@@ -23,7 +23,6 @@ int main(int argc, char **argv)
 		{
 			perror("Session expired...");
 			free(user_input);
-			//free(original_input);
 			exit(99);
 		}
 		original_input = strdup(user_input);
@@ -41,8 +40,9 @@ int main(int argc, char **argv)
 			token = strtok(NULL, " ");
 		}
 		argv[i] = NULL;
-		free(original_input);
+		exec_cmd(argv);
 	}
+	free(original_input);
 	free(user_input);
 	return (0);
 }
