@@ -9,7 +9,9 @@ int main(int argc, char **argv)
 {
 	char *display_prompt = "($)";
 	char *user_input = NULL;
+	char *original_input = NULL;
 	size_t n = 0;
+	char *token = NULL;
 
 	(void)argc;
 	(void)argv;
@@ -21,9 +23,17 @@ int main(int argc, char **argv)
 		{
 			perror("Session expired...");
 			free(user_input);
+			//free(original_input);
 			exit(99);
 		}
-		printf("%s\n", user_input);
+		original_input = strdup(user_input);
+		token = strtok(user_input, " ");
+
+		while (token != NULL)
+			token = strtok(NULL, " ");
+
+		printf("%s\n", original_input);
+		free(original_input);
 	}
 	free(user_input);
 	return (0);
