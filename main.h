@@ -4,5 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void exec_cmd(char **argv)
+#include <unistd.h>
+void exec_cmd(char **argv, char **envp);
 #endif
