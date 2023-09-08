@@ -12,9 +12,9 @@ int main(int argc, char **argv)
 	char *original_input = NULL;
 	size_t n = 0;
 	char *token = NULL;
+	int i;
 
 	(void)argc;
-	(void)argv;
 
 	while (1)
 	{
@@ -33,6 +33,14 @@ int main(int argc, char **argv)
 			token = strtok(NULL, " ");
 
 		printf("%s\n", original_input);
+		token = strtok(original_input, " ");
+
+		for (i = 0; token != NULL; i++)
+		{
+			argv[i] = strdup(token);
+			token = strtok(NULL, " ");
+		}
+		argv[i] = NULL;
 		free(original_input);
 	}
 	free(user_input);
