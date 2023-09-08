@@ -3,6 +3,7 @@
  * main - Entry point of the program
  * @argc: The number of arguments passed.
  * @argv: The list of arguments.
+ * @envp: The list of environment variables.
  * Return: 0 (Success)
  */
 int main(int argc, char **argv, char **envp)
