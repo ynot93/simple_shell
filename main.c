@@ -5,7 +5,7 @@
  * @argv: The list of arguments.
  * Return: 0 (Success)
  */
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **envp)
 {
 	char *display_prompt = "($)";
 	char *user_input = NULL;
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 			token = strtok(NULL, " ");
 		}
 		argv[i] = NULL;
-		exec_cmd(argv);
+		exec_cmd(argv, envp);
 	}
 	free(original_input);
 	free(user_input);
