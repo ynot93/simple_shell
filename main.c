@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 		printf("%s", display_prompt);
 		if ((getline(&user_input, &n, stdin)) == -1)
 		{
-			perror("Incorrect user input");
+			perror("Session expired...");
 			free(user_input);
 			exit(99);
 		}
