@@ -10,10 +10,9 @@ int main(int argc, char **argv, char **envp)
 {
 	char *display_prompt = "($)";
 	char *user_input = NULL;
-	char *original_input = NULL;
 	size_t n = 0;
-	char *token = NULL;
 	int i;
+	char *token;
 
 	(void)argc;
 
@@ -26,24 +25,23 @@ int main(int argc, char **argv, char **envp)
 			free(user_input);
 			exit(99);
 		}
-		original_input = strdup(user_input);
+		user_input[strcspn(user_input, "\n")] = 0;
 		token = strtok(user_input, " ");
-
-		while (token != NULL)
-			token = strtok(NULL, " ");
-
-		printf("%s\n", original_input);
-		token = strtok(original_input, " ");
-
 		for (i = 0; token != NULL; i++)
 		{
 			argv[i] = strdup(token);
 			token = strtok(NULL, " ");
 		}
 		argv[i] = NULL;
-		exec_cmd(argv, envp);
+		if (i > 0)
+		{
+			exec_cmd(argv, envp);
+		}
+		for (i = 0; argv[i] != NULL; i++)
+		{
+			free(argv[i]);
+		}
 	}
-	free(original_input);
 	free(user_input);
 	return (0);
 }
