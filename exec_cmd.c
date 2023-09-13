@@ -10,11 +10,15 @@
  */
 void exec_cmd(char **argv, char **envp)
 {
-	char *path = find_executable_path(cmd);
+	char *cmd, *path;
+
+	cmd = argv[0];
+	path = find_executable_path(cmd);
 
 	if (path != NULL)
 	{
-		pid_t = fork();
+		pid_t pid = fork();
+
 		if (pid == -1)
 		{
 			perror("Fork process failed");

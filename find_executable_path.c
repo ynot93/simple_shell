@@ -8,21 +8,24 @@
  */
 char *find_executable_path(char *cmd)
 {
-	char *original_path = getenv(PATH);
+	char *original_path = getenv("PATH");
+	char *constructed_path;
+	char *copy_path;
+	char *ptr;
+	struct stat file_info;
 
 	if (original_path == NULL)
 		return (NULL);
 
-	char *copy_path = strdup(original_path);
-	char *ptr = copy_path;
-	struct stat file_info;
+	copy_path = strdup(original_path);
+	ptr = copy_path;
 
 	while (*copy_path)
 	{
 		if (*copy_path == ':')
 		{
-			copy_path = '\0';
-			char *constructed_path = create_path(ptr, cmd);
+			copy_path = "\0";
+			constructed_path = create_path(ptr, cmd);
 
 			if (constructed_path != NULL && stat(constructed_path, &file_info) == 0)
 			{
@@ -34,7 +37,7 @@ char *find_executable_path(char *cmd)
 		}
 		copy_path++;
 	}
-	free(copy_path);
+	//free(copy_path);
 
 	if (stat(cmd, &file_info) == 0)
 		return (cmd);

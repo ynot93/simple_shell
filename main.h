@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
 
 void exec_cmd(char **argv, char **envp);
 char *create_path(const char *dir, const char *cmd);
