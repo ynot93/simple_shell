@@ -10,7 +10,7 @@
 #include <sys/wait.h>
 
 void exec_cmd(char **argv, char **envp);
-char *create_path(const char *dir, const char *cmd);
-char *find_executable_path(char *cmd);
+/*char *create_path(const char *dir, const char *cmd);*/
+char *find_executable_path(char *cmd, char *original_path);
 
 #endif

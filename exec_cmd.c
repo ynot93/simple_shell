@@ -13,32 +13,37 @@ void exec_cmd(char **argv, char **envp)
 	char *cmd, *path;
 
 	cmd = argv[0];
-	path = find_executable_path(cmd);
+	path = getenv("PATH");
 
 	if (path != NULL)
 	{
-		pid_t pid = fork();
+		char *full_path = find_executable_path(cmd, path);
 
-		if (pid == -1)
+		if (full_path != NULL)
 		{
-			perror("Fork process failed");
-		}
-		else if (pid == 0)
-		{
-			if (execve(cmd, argv, envp) == -1)
+			pid_t pid = fork();
+
+			if (pid == -1)
 			{
-				perror("Cannot execute command");
-				exit(EXIT_FAILURE);
+				perror("Fork process failed");
 			}
+			else if (pid == 0)
+			{
+				if (execve(full_path, argv, envp) == -1)
+				{
+					perror("Cannot execute command");
+					exit(EXIT_FAILURE);
+				}
+			}
+			else
+			{
+				wait(NULL);
+			}
+			free(full_path);
 		}
 		else
 		{
-			wait(NULL);
+			printf("%s: command not found\n", cmd);
 		}
-		free(path);
-	}
-	else
-	{
-		printf("%s: command not found\n", cmd);
 	}
 }
