@@ -7,12 +7,14 @@
 int is_interactive(void)
 {
 
-	if (isatty(STDIN_FILENO) && isatty(SDOUT_FILENO))
+	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO))
 	{
-	printf("Running interactively.\n");
+		write(STDOUT_FILENO, "Running interactively.\n", 23);
+		return 1;
 	}
 	else
 	{
-	printf("Running non-interactively.\n");
+	write(STDOUT_FILENO, "Running non-interactively.\n", 27);
+	return 0;
 	}
 }	
