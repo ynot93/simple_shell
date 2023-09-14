@@ -13,12 +13,14 @@ int main(int argc, char **argv, char **envp)
 	size_t n = 0;
 	int i;
 	char *token;
+	char *args[64];
 
 	(void)argc;
+	(void)argv;
 
 	while (1)
 	{
-		printf("%s", display_prompt);
+		write(1, display_prompt, strlen(display_prompt));
 		if ((getline(&user_input, &n, stdin)) == -1)
 		{
 			perror("Session expired...");
@@ -29,19 +31,19 @@ int main(int argc, char **argv, char **envp)
 		token = strtok(user_input, " ");
 		for (i = 0; token != NULL; i++)
 		{
-			argv[i] = strdup(token);
+			args[i] = strdup(token);
 			token = strtok(NULL, " ");
 		}
-		argv[i] = NULL;
+		args[i] = NULL;
 
-		if (strcmp(argv[0], "exit") == 0)
+		if (strcmp(args[0], "exit") == 0)
 			break;
 
 		if (i > 0)
-			exec_cmd(argv, envp);
+			exec_cmd(args, envp);
 
-		for (i = 0; argv[i] != NULL; i++)
-			free(argv[i]);
+		for (i = 0; args[i] != NULL; i++)
+			free(args[i]);
 	}
 	free(user_input);
 	return (0);
