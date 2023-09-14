@@ -42,7 +42,8 @@ void exec_cmd(char **argv, char **envp)
 		}
 		else
 		{
-			printf("%s: command not found\n", cmd);
+			write(2, cmd, strlen(cmd));
+			write(2, ": command not found\n", 20);
 		}
 	}
 }
