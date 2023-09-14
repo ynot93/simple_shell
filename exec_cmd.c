@@ -39,7 +39,6 @@ void exec_cmd(char **argv, char **envp)
 			{
 				wait(NULL);
 			}
-			free(full_path);
 		}
 		else
 		{

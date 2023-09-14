@@ -33,14 +33,15 @@ int main(int argc, char **argv, char **envp)
 			token = strtok(NULL, " ");
 		}
 		argv[i] = NULL;
+
+		if (strcmp(argv[0], "exit") == 0)
+			break;
+
 		if (i > 0)
-		{
 			exec_cmd(argv, envp);
-		}
+
 		for (i = 0; argv[i] != NULL; i++)
-		{
 			free(argv[i]);
-		}
 	}
 	free(user_input);
 	return (0);
