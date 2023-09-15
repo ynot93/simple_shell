@@ -14,13 +14,13 @@ int main(int argc, char **argv, char **envp)
 	int i;
 	char *token;
 	char *args[64];
-
 	(void)argc;
 	(void)argv;
 	is_interactive();
 
 	while (1)
 	{
+		if (isatty(STDIN_FILENO))
 		write(1, display_prompt, strlen(display_prompt));
 		if ((_getline(&user_input, &n, stdin)) == -1)
 		{
