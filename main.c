@@ -17,6 +17,7 @@ int main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
+	is_interactive();
 
 	while (1)
 	{
