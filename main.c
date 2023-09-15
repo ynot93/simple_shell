@@ -17,16 +17,15 @@ int main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	is_interactive();
 
 	while (1)
 	{
 		write(1, display_prompt, strlen(display_prompt));
-		if ((getline(&user_input, &n, stdin)) == -1)
+		if ((_getline(&user_input, &n, stdin)) == -1)
 		{
-			perror("Session expired...");
+			perror("No User Input");
 			free(user_input);
-			exit(99);
+			exit(EXIT_FAILURE);
 		}
 		user_input[strcspn(user_input, "\n")] = 0;
 		token = strtok(user_input, " ");
@@ -38,7 +37,7 @@ int main(int argc, char **argv, char **envp)
 		args[i] = NULL;
 
 		if (strcmp(args[0], "exit") == 0)
-			break;
+			exit(EXIT_SUCCESS);
 
 		if (i > 0)
 			exec_cmd(args, envp);
