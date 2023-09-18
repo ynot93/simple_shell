@@ -18,4 +18,7 @@ ssize_t _getline(char **line_ptr, size_t *n, FILE *stream);
 int _strlen(char *string);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
+int _strcmp(char *string1, char *string2);
+int _strcspn(char *string1, char *string2);
+char *_strdup(const char *string);
 #endif

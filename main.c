@@ -28,16 +28,16 @@ int main(int argc, char **argv, char **envp)
 			free(user_input);
 			exit(EXIT_FAILURE);
 		}
-		user_input[strcspn(user_input, "\n")] = 0;
+		user_input[_strcspn(user_input, "\n")] = 0;
 		token = strtok(user_input, " ");
 		for (i = 0; token != NULL; i++)
 		{
-			args[i] = strdup(token);
+			args[i] = _strdup(token);
 			token = strtok(NULL, " ");
 		}
 		args[i] = NULL;
 
-		if (strcmp(args[0], "exit") == 0)
+		if (_strcmp(args[0], "exit") == 0)
 			exit(EXIT_SUCCESS);
 
 		if (i > 0)
