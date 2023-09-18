@@ -8,7 +8,7 @@
  */
 int main(int argc, char **argv, char **envp)
 {
-	char *display_prompt = "($ )";
+	char *display_prompt = "$ ";
 	char *user_input = NULL;
 	size_t n = 0;
 	int i;
