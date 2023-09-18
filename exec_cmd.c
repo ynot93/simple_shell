@@ -42,7 +42,7 @@ void exec_cmd(char **argv, char **envp)
 		}
 		else
 		{
-			write(2, cmd, strlen(cmd));
+			write(2, cmd, _strlen(cmd));
 			write(2, ": command not found\n", 20);
 		}
 	}

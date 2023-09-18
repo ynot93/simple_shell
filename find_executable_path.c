@@ -18,12 +18,12 @@ char *find_executable_path(char *cmd, char *original_path)
 
 	while (ptr != NULL)
 	{
-		path = malloc(strlen(ptr) + strlen(cmd) + 2);
+		path = malloc(_strlen(ptr) + _strlen(cmd) + 2);
 
-		strcpy(path, ptr);
-		strcat(path, "/");
-		strcat(path, cmd);
-		strcat(path, "\0");
+		_strcpy(path, ptr);
+		_strcat(path, "/");
+		_strcat(path, cmd);
+		_strcat(path, "\0");
 		if (stat(path, &file_info) == 0)
 		{
 			free(copy_path);

@@ -14,4 +14,8 @@ char *find_executable_path(char *cmd, char *original_path);
 int is_interactive(void);
 ssize_t _getline(char **line_ptr, size_t *n, FILE *stream);
 
+/*String functions*/
+int _strlen(char *string);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
 #endif
