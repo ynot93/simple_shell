@@ -13,6 +13,8 @@ void exec_cmd(char **argv, char **envp);
 char *find_executable_path(char *cmd, char *original_path);
 int is_interactive(void);
 ssize_t _getline(char **line_ptr, size_t *n, FILE *stream);
+void init_buffer(char **line_ptr, size_t *n);
+void extend_buffer(char **line_ptr, size_t *n, size_t i);
 
 /*String functions*/
 int _strlen(char *string);
