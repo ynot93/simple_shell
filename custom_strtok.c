@@ -12,8 +12,6 @@ char *_strtok(char *str, const char *delim)
 	static char *last_token;
 	char *token_start;
 
-	last_token = NULL;
-
 	if (str != NULL)
 		last_token = str;
 
