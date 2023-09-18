@@ -15,6 +15,7 @@ int is_interactive(void);
 ssize_t _getline(char **line_ptr, size_t *n, FILE *stream);
 void init_buffer(char **line_ptr, size_t *n);
 void extend_buffer(char **line_ptr, size_t *n, size_t i);
+char *_strtok(char *str, const char *delim);
 
 /*String functions*/
 int _strlen(char *string);
@@ -23,4 +24,5 @@ char *_strcat(char *dest, char *src);
 int _strcmp(char *string1, char *string2);
 int _strcspn(char *string1, char *string2);
 char *_strdup(const char *string);
+
 #endif

@@ -21,7 +21,7 @@ int main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-		write(1, display_prompt, _strlen(display_prompt));
+			write(1, display_prompt, strlen(display_prompt));
 		if ((_getline(&user_input, &n, stdin)) == -1)
 		{
 			perror("No User Input");
@@ -29,11 +29,11 @@ int main(int argc, char **argv, char **envp)
 			exit(EXIT_FAILURE);
 		}
 		user_input[_strcspn(user_input, "\n")] = 0;
-		token = strtok(user_input, " ");
+		token = _strtok(user_input, " ");
 		for (i = 0; token != NULL; i++)
 		{
 			args[i] = _strdup(token);
-			token = strtok(NULL, " ");
+			token = _strtok(NULL, " ");
 		}
 		args[i] = NULL;
 
