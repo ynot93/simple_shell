@@ -21,6 +21,8 @@ void extend_buffer(char **line_ptr, size_t *n, size_t i);
 char *_strtok(char *str, const char *delim);
 char *_getenv(const char *var_name);
 char *str_tolower(const char *str);
+int handle_unsetenv(char *var_name);
+int handle_setenv(char *var_name, char *var_value);
 
 /*String functions*/
 int _strlen(char *string);

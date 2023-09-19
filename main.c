@@ -40,6 +40,12 @@ int main(int argc, char **argv, char **envp)
 		if (_strcmp(args[0], "exit") == 0)
 			exit(EXIT_SUCCESS);
 
+		if (_strcmp(args[0], "setenv") == 0)
+			handle_setenv(args[1], args[2]);
+
+		if (_strcmp(args[0], "unsetenv") == 0)
+			handle_unsetenv(args[1]);
+
 		if (i > 0)
 			exec_cmd(args, envp);
 
