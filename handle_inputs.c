@@ -24,7 +24,7 @@ void handle_user_input(char *user_input, char **args, char **envp)
 	{
 		if (args[1])
 		{
-			int status = atoi(args[1]);
+			int status = _atoi(args[1]);
 
 			exit(status);
 		}

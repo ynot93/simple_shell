@@ -74,3 +74,32 @@ char *_strdup(const char *string)
 	copy[len] = '\0';
 	return (copy);
 }
+
+#include "main.h"
+
+/**
+ * _atoi - Converts a string to an integer
+ * @string: The pointer to convert
+ * Return: An integer
+ */
+int _atoi(char *string)
+{
+	int sign = 1;
+	int number = 0;
+	int digit;
+	int i;
+
+	for (i = 0; string[i] != '\0'; i++)
+	{
+		if (string[i] == '-')
+			sign *= -1;
+		if (string[i] >= '0' && string[i] <= '9')
+		{
+			digit = string[i] - '0';
+			number = number * 10 + sign * digit;
+			if (string[i + 1] < '0' || string[i + 1] > '9')
+				break;
+		}
+	}
+	return (number);
+}
