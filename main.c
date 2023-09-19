@@ -21,7 +21,7 @@ int main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			write(1, display_prompt, strlen(display_prompt));
+			write(1, display_prompt, _strlen(display_prompt));
 		if ((_getline(&user_input, &n, stdin)) == -1)
 		{
 			perror("No User Input");

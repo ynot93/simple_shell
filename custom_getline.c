@@ -14,7 +14,9 @@ static size_t buffer_size;
 ssize_t _getline(char **line_ptr, size_t *n, FILE *stream)
 {
 	size_t i;
-	int ch;
+	char ch;
+	char buffer[1];
+	ssize_t bytes_read;
 	int fd = fileno(stream);
 	struct stat file_info;
 
@@ -27,8 +29,9 @@ ssize_t _getline(char **line_ptr, size_t *n, FILE *stream)
 		perror("Failed to get file information");
 		return (-1);
 	}
-	while ((ch = fgetc(stream)) != EOF)
+	while ((bytes_read = read(fd, buffer, sizeof(buffer))) > 0)
 	{
+		ch = buffer[0];
 		extend_buffer(line_ptr, n, i);
 		(*line_ptr)[i++] = ch;
 		if (ch == '\n')
@@ -37,7 +40,7 @@ ssize_t _getline(char **line_ptr, size_t *n, FILE *stream)
 			return (i);
 		}
 	}
-	if (ferror(stream))
+	if (bytes_read < 0)
 	{
 		perror("Read error");
 		return (-1);
