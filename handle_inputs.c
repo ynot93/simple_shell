@@ -33,12 +33,15 @@ void handle_user_input(char *user_input, char **args, char **envp)
 			exit(EXIT_SUCCESS);
 		}
 	}
-	if (_strcmp(args[0], "setenv") == 0)
+	else if (_strcmp(args[0], "setenv") == 0)
 		handle_setenv(args[1], args[2]);
-	if (_strcmp(args[0], "unsetenv") == 0)
+	else if (_strcmp(args[0], "unsetenv") == 0)
 		handle_unsetenv(args[1]);
-	if (i > 0)
-		exec_cmd(args, envp);
+	else
+	{
+		if (i > 0)
+			exec_cmd(args, envp);
+	}
 	for (i = 0; args[i] != NULL; i++)
 		free(args[i]);
 }
