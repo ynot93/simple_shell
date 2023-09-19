@@ -1,5 +1,4 @@
 #include "main.h"
-#include "env.h"
 /**
  * _getenv - Get the value of an environment variable.
  * @var_name: The name of the environment variable to retrieve.
@@ -21,7 +20,8 @@ char *_getenv(const char *var_name)
 	{
 		env_var = str_tolower(*env);
 
-		if (_strncmp(env_var, input_name, _strlen(input_name)) == 0 && env_var[_strlen(input_name)] == '=')
+		if (_strncmp(env_var, input_name, _strlen(input_name)) == 0
+				&& env_var[_strlen(input_name)] == '=')
 		{
 			env_var = _strdup(*env + _strlen(input_name) + 1);
 			break;

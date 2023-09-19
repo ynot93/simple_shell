@@ -10,6 +10,8 @@
 #include <sys/wait.h>
 #include <ctype.h>
 
+extern char **environ;
+
 void exec_cmd(char **argv, char **envp);
 char *find_executable_path(char *cmd, char *original_path);
 int is_interactive(void);
