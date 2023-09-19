@@ -24,5 +24,6 @@ char *_strcat(char *dest, char *src);
 int _strcmp(char *string1, char *string2);
 int _strcspn(char *string1, char *string2);
 char *_strdup(const char *string);
+char *_strchr(const char *string, char c);
 
 #endif

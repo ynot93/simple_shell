@@ -45,3 +45,23 @@ char *_strcat(char *dest, char *src)
 	dest[i + j] = '\0';
 	return (dest);
 }
+
+/**
+ * _strchr - Locates a character in a string.
+ * @string: The string to search.
+ * @c: The character to locate.
+ *
+ * Return: The first occurrence of 'c' in the string
+ *         or NULL if the character is not found.
+ */
+char *_strchr(const char *string, char c)
+{
+	while (*string != c && *string != '\0')
+	{
+		string++;
+	}
+	if (*string == c)
+		return ((char *)string);
+	else
+		return (NULL);
+}

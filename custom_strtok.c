@@ -22,7 +22,7 @@ char *_strtok(char *str, const char *delim)
 
 	while (*last_token != '\0')
 	{
-		if (strchr(delim, *last_token) != NULL)
+		if (_strchr(delim, *last_token) != NULL)
 		{
 			*last_token = '\0';
 			last_token++;
