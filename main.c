@@ -11,8 +11,6 @@ int main(int argc, char **argv, char **envp)
 	char *display_prompt = "$ ";
 	char *user_input = NULL;
 	size_t n = 0;
-	int i;
-	char *token;
 	char *args[64];
 	(void)argc;
 	(void)argv;
@@ -28,29 +26,7 @@ int main(int argc, char **argv, char **envp)
 			free(user_input);
 			exit(EXIT_FAILURE);
 		}
-		user_input[_strcspn(user_input, "\n")] = 0;
-		token = _strtok(user_input, " ");
-		for (i = 0; token != NULL; i++)
-		{
-			args[i] = _strdup(token);
-			token = _strtok(NULL, " ");
-		}
-		args[i] = NULL;
-
-		if (_strcmp(args[0], "exit") == 0)
-			exit(EXIT_SUCCESS);
-
-		if (_strcmp(args[0], "setenv") == 0)
-			handle_setenv(args[1], args[2]);
-
-		if (_strcmp(args[0], "unsetenv") == 0)
-			handle_unsetenv(args[1]);
-
-		if (i > 0)
-			exec_cmd(args, envp);
-
-		for (i = 0; args[i] != NULL; i++)
-			free(args[i]);
+		handle_user_input(user_input, args, envp);
 	}
 	free(user_input);
 	return (0);

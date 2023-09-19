@@ -23,6 +23,7 @@ char *_getenv(const char *var_name);
 char *str_tolower(const char *str);
 int handle_unsetenv(char *var_name);
 int handle_setenv(char *var_name, char *var_value);
+void handle_user_input(char *user_input, char **args, char **envp);
 
 /*String functions*/
 int _strlen(char *string);
