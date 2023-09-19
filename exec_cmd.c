@@ -13,7 +13,7 @@ void exec_cmd(char **argv, char **envp)
 	char *cmd, *path;
 
 	cmd = argv[0];
-	path = getenv("PATH");
+	path = _getenv("PATH");
 
 	if (path != NULL)
 	{
