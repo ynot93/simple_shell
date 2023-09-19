@@ -21,9 +21,9 @@ char *_getenv(const char *var_name)
 	{
 		env_var = str_tolower(*env);
 
-		if (strncmp(env_var, input_name, strlen(input_name)) == 0 && env_var[strlen(input_name)] == '=')
+		if (_strncmp(env_var, input_name, _strlen(input_name)) == 0 && env_var[_strlen(input_name)] == '=')
 		{
-			env_var = _strdup(*env + strlen(input_name) + 1);
+			env_var = _strdup(*env + _strlen(input_name) + 1);
 			break;
 		}
 		free(env_var);

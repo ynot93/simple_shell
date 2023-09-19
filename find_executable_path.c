@@ -13,7 +13,7 @@ char *find_executable_path(char *cmd, char *original_path)
 	char *path;
 	struct stat file_info;
 
-	copy_path = strdup(original_path);
+	copy_path = _strdup(original_path);
 	ptr = _strtok(copy_path, ":");
 
 	while (ptr != NULL)

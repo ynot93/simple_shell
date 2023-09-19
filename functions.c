@@ -65,3 +65,21 @@ char *_strchr(const char *string, char c)
 	else
 		return (NULL);
 }
+
+/**
+ * _strncmp - Compare two strings.
+ * @string1: The first string to be compared.
+ * @string2: The second string to be compared.
+ * @n: The number of characters to compare.
+ *
+ * Return: The result between the first differing characters or 0.
+ */
+int _strncmp(const char *string1, const char *string2, size_t n)
+{
+	size_t i;
+
+	for (i = 0; i < n && (string1[i] || string2[i]); i++)
+		if (string1[i] != string2[i])
+			return (string1[i] - string2[i]);
+	return (0);
+}
