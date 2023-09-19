@@ -10,11 +10,11 @@ int is_interactive(void)
 	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO))
 	{
 		write(STDOUT_FILENO, "Running interactively.\n", 23);
-		return 1;
+		return (1);
 	}
 	else
 	{
 	write(STDOUT_FILENO, "Running non-interactively.\n", 27);
-	return 0;
+	return (0);
 	}
-}	
+}
