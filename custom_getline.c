@@ -15,7 +15,7 @@ ssize_t _getline(char **line_ptr, size_t *n, FILE *stream)
 {
 	size_t i;
 	char ch;
-	char buffer[1];
+	/*char buffer[1];*/
 	ssize_t bytes_read;
 	int fd = fileno(stream);
 	struct stat file_info;
@@ -29,9 +29,9 @@ ssize_t _getline(char **line_ptr, size_t *n, FILE *stream)
 		perror("Failed to get file information");
 		return (-1);
 	}
-	while ((bytes_read = read(fd, buffer, sizeof(buffer))) > 0)
+	while ((bytes_read = read(fd, &ch, 1)) > 0)
 	{
-		ch = buffer[0];
+		/*ch = buffer[0];*/
 		extend_buffer(line_ptr, n, i);
 		(*line_ptr)[i++] = ch;
 		if (ch == '\n')
@@ -68,6 +68,10 @@ void init_buffer(char **line_ptr, size_t *n)
 			{
 				perror("Memory allocation failed");
 				exit(EXIT_FAILURE);
+			}
+			else
+			{
+				free(*line_ptr);
 			}
 		}
 		*n = buffer_size;

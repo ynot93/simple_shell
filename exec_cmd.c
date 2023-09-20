@@ -26,6 +26,7 @@ void exec_cmd(char **argv, char **envp)
 			if (pid == -1)
 			{
 				perror("Fork process failed");
+				exit(EXIT_FAILURE);
 			}
 			else if (pid == 0)
 			{
