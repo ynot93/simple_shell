@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <ctype.h>
+#include <stdbool.h>
 
 extern char **environ;
 
@@ -35,4 +36,5 @@ char *_strdup(const char *string);
 char *_strchr(const char *string, char c);
 int _strncmp(const char *string1, const char *string2, size_t n);
 int _atoi(char *string);
+size_t _strspn(const char *s1, const char *s2);
 #endif
