@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * main - Entry point of the program
  * @argc: The number of arguments passed.
@@ -13,6 +14,7 @@ int main(int argc, char **argv, char **envp)
 	size_t n = 0;
 	char *args[64];
 	int interactive;
+	ssize_t getline_status;
 	(void)argc;
 	(void)argv;
 	interactive = is_interactive();
@@ -21,15 +23,27 @@ int main(int argc, char **argv, char **envp)
 	{
 		if (interactive && isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, display_prompt, _strlen(display_prompt));
-		if ((_getline(&user_input, &n, stdin)) == -1)
+		getline_status = _getline(&user_input, &n, stdin);
+
+		if (getline_status == -1)
 		{
-			perror("No User Input");
-			free(user_input);
-			exit(EXIT_FAILURE);
+			if (feof(stdin))
+			{
+				if (interactive && isatty(STDIN_FILENO))
+					write(STDOUT_FILENO, "\n", 1);
+				free(user_input);
+				exit(EXIT_SUCCESS);
+			}
+			else
+			{
+				perror("No User Input");
+				free(user_input);
+				exit(EXIT_FAILURE);
+			}
 		}
 		handle_user_input(user_input, args, envp);
 		write(STDOUT_FILENO, "\n", 1);
+		free(user_input);
 	}
-	free(user_input);
 	return (0);
 }
