@@ -26,7 +26,7 @@ int handle_setenv(char *var_name, char *var_value);
 void handle_user_input(char *user_input, char **args, char **envp);
 
 /*String functions*/
-int _strlen(char *string);
+size_t _strlen(char *string);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *string1, char *string2);

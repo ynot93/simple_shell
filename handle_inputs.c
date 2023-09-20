@@ -14,7 +14,7 @@ void handle_user_input(char *user_input, char **args, char **envp)
 	user_input[_strcspn(user_input, "\n")] = 0;
 
 	if (user_input == NULL || user_input[0] == '\0' ||
-			strspn(user_input, " \t\n\r") == strlen(user_input))
+			strspn(user_input, " \t\n\r") == _strlen(user_input))
 		return;
 	token = strtok(user_input, " \t\n");
 	while (token != NULL)

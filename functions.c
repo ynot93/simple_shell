@@ -4,9 +4,9 @@
  * @string: the string to get the length of
  * Return: the length of @string
  */
-int _strlen(char *string)
+size_t _strlen(char *string)
 {
-	int len;
+	size_t len;
 
 	for (len = 0; string[len] != '\0'; len++)
 		;
