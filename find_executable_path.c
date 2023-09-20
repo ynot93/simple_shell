@@ -39,7 +39,7 @@ char *find_executable_path(char *cmd, char *original_path)
 
 	if (stat(cmd, &file_info) == 0)
 	{
-		return (strdup(cmd));
+		return (_strdup(cmd));
 	}
 	return (NULL);
 }
