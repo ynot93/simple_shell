@@ -15,7 +15,7 @@ void handle_user_input(char *user_input, char **args, char **envp)
 	token = strtok(user_input, " ");
 	for (i = 0; token != NULL; i++)
 	{
-		args[i] = _strdup(token);
+	args[i] = _strdup(token);
 		token = strtok(NULL, " ");
 	}
 	args[i] = NULL;
@@ -41,6 +41,4 @@ void handle_user_input(char *user_input, char **args, char **envp)
 		if (i > 0)
 			exec_cmd(args, envp);
 	}
-	for (i = 0; args[i] != NULL; i++)
-		free(args[i]);
 }
