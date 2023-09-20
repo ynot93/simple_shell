@@ -44,5 +44,6 @@ int main(int argc, char **argv, char **envp)
 			handle_user_input(user_input, args, envp);
 	}
 	free(user_input);
+	user_input = NULL;
 	return (0);
 }
