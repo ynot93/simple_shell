@@ -41,9 +41,9 @@ int main(int argc, char **argv, char **envp)
 				exit(EXIT_FAILURE);
 			}
 		}
-		handle_user_input(user_input, args, envp);
+		if (user_input[0] != '\n')
+			handle_user_input(user_input, args, envp);
 		write(STDOUT_FILENO, "\n", 1);
-		/*free(user_input);*/
 	}
 	return (0);
 }
