@@ -43,6 +43,6 @@ int main(int argc, char **argv, char **envp)
 		if (user_input[0] != '\n')
 			handle_user_input(user_input, args, envp);
 	}
-	/*free(user_input);*/
+	free(user_input);
 	return (0);
 }
