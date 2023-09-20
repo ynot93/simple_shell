@@ -32,7 +32,7 @@ int main(int argc, char **argv, char **envp)
 			{
 				if (interactive && isatty(STDIN_FILENO))
 					write(STDOUT_FILENO, "\n", 1);
-				break;
+				exit(EXIT_SUCCESS);
 			}
 			else
 			{
