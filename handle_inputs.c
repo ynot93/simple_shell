@@ -8,15 +8,19 @@
  */
 void handle_user_input(char *user_input, char **args, char **envp)
 {
-	int i;
+	int i = 0;
 	char *token;
 
 	user_input[_strcspn(user_input, "\n")] = 0;
-	token = strtok(user_input, " ");
-	for (i = 0; token != NULL; i++)
+
+	if (user_input == NULL || user_input[0] == '\0' ||
+			strspn(user_input, " \t\n\r") == strlen(user_input))
+		return;
+	token = strtok(user_input, " \t\n");
+	while (token != NULL)
 	{
-	args[i] = _strdup(token);
-		token = strtok(NULL, " ");
+		args[i++] = token;
+		token = strtok(NULL, " \t\n");
 	}
 	args[i] = NULL;
 
@@ -25,6 +29,7 @@ void handle_user_input(char *user_input, char **args, char **envp)
 		if (args[1])
 		{
 			int status = _atoi(args[1]);
+
 			exit(status);
 		}
 		else

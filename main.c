@@ -14,7 +14,7 @@ int main(int argc, char **argv, char **envp)
 	size_t n = 0;
 	char *args[64];
 	int interactive;
-	int i;
+	/*int i;*/
 	ssize_t getline_status;
 	(void)argc;
 	(void)argv;
@@ -32,22 +32,18 @@ int main(int argc, char **argv, char **envp)
 			{
 				if (interactive && isatty(STDIN_FILENO))
 					write(STDOUT_FILENO, "\n", 1);
-				free(user_input);
 				exit(EXIT_SUCCESS);
 			}
 			else
 			{
 				perror("No User Input");
-				free(user_input);
+				/*free(user_input);*/
 				exit(EXIT_FAILURE);
 			}
 		}
 		if (user_input[0] != '\n')
 			handle_user_input(user_input, args, envp);
-		write(STDOUT_FILENO, "\n", 1);
-		for (i = 0; args[i] != NULL; i++)
-			free(args[i]);
 	}
-	/*free(user_input);*/
+	free(user_input);
 	return (0);
 }
