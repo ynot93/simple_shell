@@ -14,13 +14,13 @@ void handle_user_input(char *user_input, char **args, char **envp)
 	user_input[_strcspn(user_input, "\n")] = 0;
 
 	if (user_input == NULL || user_input[0] == '\0' ||
-			_strspn(user_input, " \t\n\r") == _strlen(user_input))
+			_strspn(user_input, " ") == _strlen(user_input))
 		return;
-	token = strtok(user_input, " \t\n");
+	token = strtok(user_input, " ");
 	while (token != NULL)
 	{
 		args[i++] = token;
-		token = strtok(NULL, " \t\n");
+		token = strtok(NULL, " ");
 	}
 	args[i] = NULL;
 
