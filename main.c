@@ -32,18 +32,18 @@ int main(int argc, char **argv, char **envp)
 			{
 				if (interactive && isatty(STDIN_FILENO))
 					write(STDOUT_FILENO, "\n", 1);
+				free(user_input);
 				exit(EXIT_SUCCESS);
 			}
 			else
 			{
 				perror("Error reading input");
+				free(user_input);
 				exit(EXIT_FAILURE);
 			}
 		}
-		if (user_input[0] != '\n')
-			handle_user_input(user_input, args, envp);
+		handle_user_input(user_input, args, envp);
 	}
-	free(user_input);
-	user_input = NULL;
+	/*free(user_input);*/
 	return (0);
 }

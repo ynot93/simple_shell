@@ -35,17 +35,19 @@ void exec_cmd(char **argv, char **envp)
 					perror("Cannot execute command");
 					exit(EXIT_FAILURE);
 				}
+				free(full_path);
 			}
 			else
 			{
 				wait(NULL);
+				free(full_path);
 			}
-			free(full_path);
 		}
 		else
 		{
 			write(2, cmd, _strlen(cmd));
 			write(2, ": command not found\n", 20);
+			exit(EXIT_FAILURE);
 		}
 	}
 }
