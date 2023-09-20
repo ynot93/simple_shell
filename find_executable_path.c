@@ -11,10 +11,11 @@ char *find_executable_path(char *cmd, char *original_path)
 	char *copy_path;
 	char *ptr;
 	char *path;
+	char *result;
 	struct stat file_info;
 
 	copy_path = _strdup(original_path);
-	ptr = _strtok(copy_path, ":");
+	ptr = strtok(copy_path, ":");
 
 	while (ptr != NULL)
 	{
@@ -26,11 +27,13 @@ char *find_executable_path(char *cmd, char *original_path)
 		_strcat(path, "\0");
 		if (stat(path, &file_info) == 0)
 		{
+			result = _strdup(path);
 			free(copy_path);
-			return (path);
+			free(path);
+			return (result);
 		}
 		free(path);
-		ptr = _strtok(NULL, ":");
+		ptr = strtok(NULL, ":");
 	}
 	free(copy_path);
 

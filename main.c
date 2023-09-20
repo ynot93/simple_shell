@@ -23,7 +23,7 @@ int main(int argc, char **argv, char **envp)
 	{
 		if (interactive && isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, display_prompt, _strlen(display_prompt));
-		getline_status = _getline(&user_input, &n, stdin);
+		getline_status = getline(&user_input, &n, stdin);
 
 		if (getline_status == -1)
 		{
@@ -43,7 +43,7 @@ int main(int argc, char **argv, char **envp)
 		}
 		handle_user_input(user_input, args, envp);
 		write(STDOUT_FILENO, "\n", 1);
-		free(user_input);
+		/*free(user_input);*/
 	}
 	return (0);
 }

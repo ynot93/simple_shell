@@ -1,5 +1,4 @@
 #include "main.h"
-#include "main.h"
 /**
  * _strcmp - compares two strings
  * @string1: The first string
@@ -74,8 +73,6 @@ char *_strdup(const char *string)
 	copy[len] = '\0';
 	return (copy);
 }
-
-#include "main.h"
 
 /**
  * _atoi - Converts a string to an integer

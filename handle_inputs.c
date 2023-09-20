@@ -12,11 +12,11 @@ void handle_user_input(char *user_input, char **args, char **envp)
 	char *token;
 
 	user_input[_strcspn(user_input, "\n")] = 0;
-	token = _strtok(user_input, " ");
+	token = strtok(user_input, " ");
 	for (i = 0; token != NULL; i++)
 	{
 		args[i] = _strdup(token);
-		token = _strtok(NULL, " ");
+		token = strtok(NULL, " ");
 	}
 	args[i] = NULL;
 
@@ -25,7 +25,6 @@ void handle_user_input(char *user_input, char **args, char **envp)
 		if (args[1])
 		{
 			int status = _atoi(args[1]);
-
 			exit(status);
 		}
 		else
