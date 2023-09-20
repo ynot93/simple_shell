@@ -11,7 +11,7 @@ char *find_executable_path(char *cmd, char *original_path)
 	char *copy_path;
 	char *ptr;
 	char *path;
-	char *result;
+	char *result = NULL;
 	struct stat file_info;
 
 	copy_path = _strdup(original_path);
@@ -39,7 +39,7 @@ char *find_executable_path(char *cmd, char *original_path)
 
 	if (stat(cmd, &file_info) == 0)
 	{
-		return (cmd);
+		return (strdup(cmd));
 	}
 	return (NULL);
 }

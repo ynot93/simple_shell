@@ -22,30 +22,27 @@ int main(int argc, char **argv, char **envp)
 
 	while (1)
 	{
-		while (1)
-		{
-			if (interactive && isatty(STDIN_FILENO))
-				write(STDOUT_FILENO, display_prompt, _strlen(display_prompt));
-			getline_status = getline(&user_input, &n, stdin);
+		if (interactive && isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, display_prompt, _strlen(display_prompt));
+		getline_status = getline(&user_input, &n, stdin);
 
-			if (getline_status == -1)
+		if (getline_status == -1)
+		{
+			if (feof(stdin))
 			{
-				if (feof(stdin))
-				{
-					if (interactive && isatty(STDIN_FILENO))
-						write(STDOUT_FILENO, "\n", 1);
-					break;
-				}
-				else
-				{
-					perror("Error reading input");
-					exit(EXIT_FAILURE);
-				}
+				if (interactive && isatty(STDIN_FILENO))
+					write(STDOUT_FILENO, "\n", 1);
+				break;
 			}
-			if (user_input[0] != '\n')
-				handle_user_input(user_input, args, envp);
+			else
+			{
+				perror("Error reading input");
+				exit(EXIT_FAILURE);
+			}
 		}
-		/*free(user_input);*/
-		return (0);
+		if (user_input[0] != '\n')
+			handle_user_input(user_input, args, envp);
 	}
+	/*free(user_input);*/
+	return (0);
 }
