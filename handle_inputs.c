@@ -33,14 +33,14 @@ void handle_user_input(char *user_input, char **args, char **envp)
 			exit(status);
 		}
 		else
-		{
 			exit(EXIT_SUCCESS);
-		}
 	}
 	else if (_strcmp(args[0], "setenv") == 0)
 		handle_setenv(args[1], args[2]);
 	else if (_strcmp(args[0], "unsetenv") == 0)
 		handle_unsetenv(args[1]);
+	else if (_strcmp(args[0], "env") == 0)
+		print_env(envp);
 	else
 	{
 		if (i > 0)
