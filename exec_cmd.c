@@ -39,16 +39,7 @@ void exec_cmd(char **argv, char **envp)
 			}
 			else
 			{
-				int child_status;
-				waitpid(pid, &child_status, 0);
-
-				if (WIFEXITED(child_status))
-				{
-					int exit_status = WEXITSTATUS(child_status);
-					exit(exit_status);
-				}
-				else
-					exit(EXIT_FAILURE);
+				wait(NULL)
 				free(full_path);
 			}
 		}
